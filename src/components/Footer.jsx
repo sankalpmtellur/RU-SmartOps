@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                    System Synchronized
+                    System Synchronised
                 </span>
             </div>
         </div>

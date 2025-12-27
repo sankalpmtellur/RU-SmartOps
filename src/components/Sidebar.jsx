@@ -43,10 +43,7 @@ export default function Sidebar() {
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar">
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-4 mb-4">
-          Core Modules
-        </p>
+      <nav className="flex-1 py-6 px-4 space-y-1">
         
         {menuItems.map(({ name, icon: Icon, path }) => {
           const active = location.pathname === path;

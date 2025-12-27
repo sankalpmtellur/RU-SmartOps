@@ -1,43 +1,106 @@
 import { Link } from "react-router-dom";
-import { Users, Wind, Sun, Droplets, Trash2, Activity, Trophy, TreePine, Truck, Building2 } from "lucide-react";
+import { 
+  Users, Wind, Sun, Droplets, Trash2, Activity, 
+  Trophy, TreePine, Truck, Building2, ArrowUpRight, 
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 const modules = [
-  { name: "Classroom Occupancy", value: "Live Status", icon: Users, path: "/occupancy", color: "bg-orange-100 text-orange-700 border-orange-300" },
-  { name: "Air Quality Monitor", value: "PM2.5 / PM10", icon: Wind, path: "/air-quality", color: "bg-blue-100 text-blue-700 border-blue-300" },
-  { name: "Urban Heat Island", value: "Campus Temp Map", icon: Sun, path: "/heat-island", color: "bg-yellow-100 text-yellow-700 border-yellow-300" },
-  { name: "Toilet Hygiene Monitor", value: "Cleanliness Index", icon: Droplets, path: "/toilets", color: "bg-teal-100 text-teal-700 border-teal-300" },
-  { name: "Cafeteria Waste Analytics", value: "Daily Waste", icon: Trash2, path: "/waste", color: "bg-red-100 text-red-700 border-red-300" },
-  { name: "Solar / Energy Efficiency", value: "Output: kW", icon: Activity, path: "/solar", color: "bg-green-100 text-green-700 border-green-300" },
-  { name: "Water Usage Tracker", value: "Liters Today", icon: Droplets, path: "/water", color: "bg-indigo-100 text-indigo-700 border-indigo-300" },
-  { name: "Sports Facility Usage", value: "Users Today", icon: Trophy, path: "/sports", color: "bg-purple-100 text-purple-700 border-purple-300" },
-  { name: "Tree Canopy Mapping", value: "Drone Coverage", icon: TreePine, path: "/trees", color: "bg-emerald-100 text-emerald-700 border-emerald-300" },
-  { name: "Accident / Traffic Blackspot", value: "Alerts", icon: Truck, path: "/traffic", color: "bg-gray-100 text-gray-700 border-gray-300" },
-  { name: "Campus Buildings Audit", value: "Energy Rating", icon: Building2, path: "/buildings", color: "bg-slate-100 text-slate-700 border-slate-300" },
+  { name: "Classroom Occupancy", value: "84% Capacity", status: "Live", icon: Users, path: "/occupancy", trend: "+12%" },
+  { name: "Air Quality Monitor", value: "AQI: 42 (Good)", status: "Optimal", icon: Wind, path: "/air-quality", trend: "Stable" },
+  { name: "Urban Heat Island", value: "Avg 28°C", status: "Monitoring", icon: Sun, path: "/heat-island", trend: "-2°C" },
+  { name: "Toilet Hygiene", value: "Level: High", status: "Clean", icon: Droplets, path: "/toilets", trend: "100%" },
+  { name: "Cafeteria Waste", value: "124kg Total", status: "Analyzing", icon: Trash2, path: "/waste", trend: "-5%" },
+  { name: "Solar Efficiency", value: "4.2 kW/h", status: "Generating", icon: Activity, path: "/solar", trend: "+18%" },
+  { name: "Water Usage", value: "12.4k Liters", status: "Inflow", icon: Droplets, path: "/water", trend: "Normal" },
+  { name: "Sports Facility", value: "42 Active Users", status: "Open", icon: Trophy, path: "/sports", trend: "Peak" },
+  { name: "Tree Canopy", value: "64% Coverage", status: "Mapped", icon: TreePine, path: "/trees", trend: "Stable" },
+  { name: "Traffic Safety", value: "0 Accidents", status: "Secure", icon: Truck, path: "/traffic", trend: "Safe" },
+  { name: "Buildings Audit", value: "Grade: A+", status: "Verified", icon: Building2, path: "/buildings", trend: "Audit-Done" },
 ];
 
 export default function Dashboard() {
+  const brandCrimson = "#A50034";
+  const brandSaffron = "#D95F23";
+
   return (
-    <div className="w-full">
-      {/* Title */}
-      <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-800">RU SmartOps – Admin Overview</h1>
-        <p className="text-gray-500 text-sm mt-1">Live status & insights of all IoT + Impact systems inside Rishihood University</p>
+    <div className="w-full space-y-10">
+      
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Real-Time Intelligence</span>
+          </div>
+          <h1 className="text-4xl font-black text-slate-900 tracking-tight">
+            Institutional <span style={{ color: brandCrimson }}>Overview</span>
+          </h1>
+          <p className="text-slate-500 text-sm mt-2 font-medium max-w-xl">
+            Centralised monitoring of all IoT frameworks and impact-driven research systems across Rishihood University.
+          </p>
+        </div>
+        
+        {/* Quick Stats Banner */}
+        <div className="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm flex gap-8 px-8">
+            <div className="text-center">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Systems</p>
+                <p className="text-xl font-black text-slate-900">11/11</p>
+            </div>
+            <div className="w-[1px] bg-slate-100 h-10"></div>
+            <div className="text-center">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">System Health</p>
+                <p className="text-xl font-black text-green-500">98.2%</p>
+            </div>
+        </div>
       </div>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {modules.map(({ name, value, icon: Icon, path, color }) => (
-          <Link
+      {/* Modules Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {modules.map(({ name, value, status, icon: Icon, path, trend }, index) => (
+          <motion.div
             key={name}
-            to={path}
-            className={`border rounded-xl p-5 shadow-sm hover:shadow-lg transition-all cursor-pointer hover:-translate-y-1 ${color}`}
+            whileHover={{ y: -5 }}
+            className="group"
           >
-            <div className="flex items-center justify-between">
-              <Icon size={32} />
-            </div>
-            <h3 className="mt-4 text-lg font-semibold">{name}</h3>
-            <p className="text-sm mt-1 opacity-80">{value}</p>
-          </Link>
+            <Link to={path}>
+              <div className="h-full bg-white border border-slate-100 p-6 rounded-[24px] shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] transition-all flex flex-col justify-between relative overflow-hidden">
+                
+                {/* Top: Icon & Status */}
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-3 rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-orange-50 group-hover:text-[#D95F23] transition-colors">
+                    <Icon size={24} strokeWidth={2} />
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-slate-300">Status</span>
+                    <span className="text-[10px] font-bold text-green-500 uppercase tracking-tight">{status}</span>
+                  </div>
+                </div>
+
+                {/* Middle: Content */}
+                <div>
+                  <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">
+                    {name}
+                  </h3>
+                  <div className="flex items-baseline gap-2">
+                    <p className="text-xl font-black text-slate-900 tracking-tight">
+                        {value}
+                    </p>
+                    <span className="text-[10px] font-bold text-orange-500">{trend}</span>
+                  </div>
+                </div>
+
+                {/* Footer: Bottom Label */}
+                <div className="mt-6 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">View Analytics</span>
+                   <ArrowUpRight size={14} className="text-slate-400" />
+                </div>
+
+                {/* Subtle Hover Accent */}
+                <div className="absolute top-0 right-0 w-1 h-full bg-[#A50034] translate-x-1 group-hover:translate-x-0 transition-transform"></div>
+              </div>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </div>
