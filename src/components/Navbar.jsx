@@ -26,7 +26,7 @@ export default function Navbar() {
     const title = pageTitleMap[location.pathname] || "Control Center";
 
     const handleLogout = () => {
-        navigate("/login");
+        navigate("/launch");
     };
 
     return (
