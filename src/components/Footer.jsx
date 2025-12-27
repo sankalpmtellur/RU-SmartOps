@@ -31,9 +31,6 @@ export default function Footer() {
             <button className="hover:text-slate-900 transition-colors tracking-[0.3em]">Privacy</button>
             <button className="hover:text-slate-900 transition-colors tracking-[0.3em]">Guidelines</button>
           </div>
-          <p className="text-[10px] font-medium text-slate-300">
-            Internal Version 2.4.0-A
-          </p>
         </div>
       </div>
     </footer>
