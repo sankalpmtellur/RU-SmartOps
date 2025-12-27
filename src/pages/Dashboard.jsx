@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { 
-  Users, Wind, Sun, Droplets, Trash2, Activity, 
-  Trophy, TreePine, Truck, Building2, ArrowUpRight, 
+import {
+  Users, Wind, Sun, Droplets, Trash2, Activity,
+  Trophy, TreePine, Truck, Building2, ArrowUpRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
 
   return (
     <div className="w-full space-y-10">
-      
+
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
@@ -40,18 +40,18 @@ export default function Dashboard() {
             Centralised monitoring of all IoT frameworks and impact-driven research systems across Rishihood University.
           </p>
         </div>
-        
+
         {/* Quick Stats Banner */}
         <div className="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm flex gap-8 px-8">
-            <div className="text-center">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Systems</p>
-                <p className="text-xl font-black text-slate-900">11/11</p>
-            </div>
-            <div className="w-[1px] bg-slate-100 h-10"></div>
-            <div className="text-center">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">System Health</p>
-                <p className="text-xl font-black text-green-500">98.2%</p>
-            </div>
+          <div className="text-center">
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Systems</p>
+            <p className="text-xl font-black text-slate-900">11/11</p>
+          </div>
+          <div className="w-[1px] bg-slate-100 h-10"></div>
+          <div className="text-center">
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">System Health</p>
+            <p className="text-xl font-black text-green-500">98.2%</p>
+          </div>
         </div>
       </div>
 
@@ -65,7 +65,7 @@ export default function Dashboard() {
           >
             <Link to={path}>
               <div className="h-full bg-white border border-slate-100 p-6 rounded-[24px] shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] transition-all flex flex-col justify-between relative overflow-hidden">
-                
+
                 {/* Top: Icon & Status */}
                 <div className="flex justify-between items-start mb-6">
                   <div className="p-3 rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-orange-50 group-hover:text-[#D95F23] transition-colors">
@@ -84,7 +84,7 @@ export default function Dashboard() {
                   </h3>
                   <div className="flex items-baseline gap-2">
                     <p className="text-xl font-black text-slate-900 tracking-tight">
-                        {value}
+                      {value}
                     </p>
                     <span className="text-[10px] font-bold text-orange-500">{trend}</span>
                   </div>
@@ -92,8 +92,8 @@ export default function Dashboard() {
 
                 {/* Footer: Bottom Label */}
                 <div className="mt-6 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">View Analytics</span>
-                   <ArrowUpRight size={14} className="text-slate-400" />
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">View Analytics</span>
+                  <ArrowUpRight size={14} className="text-slate-400" />
                 </div>
 
                 {/* Subtle Hover Accent */}
